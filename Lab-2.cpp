@@ -1,4 +1,3 @@
-﻿
 #include <iostream>
 
 using namespace std;
@@ -6,17 +5,39 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-int number = 0;
-cout << "Введите число от 1 до 9999: ";
-cin >> number;
-cout << endl;
+	int number = 0;
 
-if (number < 1 || number > 9999)
-{
-	cout << "Число не входит в диапазон от 1 до 9999!" << endl;
-}
-else
-{
+	// ввод числа
+	while (true)
+	{
+		cout << "Введите число от 1 до 9999: ";
+		cin >> number;
+
+		// обработка ввода неверного типа данных
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << endl;
+			cout << "Неверный тип данных.\n" << "Повторите попытку." << endl;
+			cout << endl;
+		}
+
+		// обработка ввода числа, выходящего за пределы диапазона
+		else if (number > 9999 || number < 1)
+		{
+			cout << endl;
+			cout << "Введено число, которое не входит в заданный диапазон.\n" << "Повторите попытку." << endl;
+			cout << endl;
+		}
+
+		else
+		{
+			break;
+		}
+	}
+
+	// перевод разряда тысяч
 	if ((number / 1000) % 10 == 1)
 	{
 		cout << "одна тысяча ";
@@ -54,6 +75,7 @@ else
 		cout << "девять тысяч ";
 	}
 
+	// перевод разряда сотен
 	if ((number / 100) % 10 == 1)
 	{
 		cout << "сто ";
@@ -91,130 +113,130 @@ else
 		cout << "девятьсот ";
 	}
 
-
+	// перевод чисел от 10 до 19
 	if ((number / 10) % 10 == 1)
 	{
 		if (number % 10 == 0)
 		{
-			cout << "десять рублей.";
+			cout << "десять рублей.\n";
 		}
 		else if (number % 10 == 1)
 		{
-			cout << "одиннадцать рублей.";
+			cout << "одиннадцать рублей.\n";
 		}
 		else if (number % 10 == 2)
 		{
-			cout << "двенадцать рублей.";
+			cout << "двенадцать рублей.\n";
 		}
 		else if (number % 10 == 3)
 		{
-			cout << "тринадцать рублей.";
+			cout << "тринадцать рублей.\n";
 		}
 		else if (number % 10 == 4)
 		{
-			cout << "четырнадцать рублей.";
-		}
-		else if (number % 10 == 4)
-		{
-			cout << "пятнадцать рублей.";
-		}
-		else if (number % 10 == 4)
-		{
-			cout << "шестнадцать рублей.";
+			cout << "четырнадцать рублей.\n";
 		}
 		else if (number % 10 == 5)
 		{
-			cout << "семнадцать рублей.";
+			cout << "пятнадцать рублей.\n";
 		}
 		else if (number % 10 == 6)
 		{
-			cout << "восемнадцать рублей.";
+			cout << "шестнадцать рублей.\n";
 		}
 		else if (number % 10 == 7)
 		{
-			cout << "девятнадцать рублей.";
-		}
-	}
-	else 
-	{ 
-	if ((number / 10) % 10 == 2)
-	{
-		cout << "двадцать ";
-	}
-	else if ((number / 10) % 10 == 3)
-	{
-		cout << "тридцать ";
-	}
-	else if ((number / 10) % 10 == 4)
-	{
-		cout << "сорок ";
-	}
-	else if ((number / 10) % 10 == 5)
-	{
-		cout << "пятьдесят ";
-	}
-	else if ((number / 10) % 10 == 6)
-	{
-		cout << "шестьдесят ";
-	}
-	else if ((number / 10) % 10 == 7)
-	{
-		cout << "семьдесят ";
-	}
-	else if ((number / 10) % 10 == 8)
-	{
-		cout << "восемьдесят ";
-	}
-	else if ((number / 10) % 10 == 9)
-	{
-		cout << "девяносто ";
-	}
-
-		if (number % 10 == 0)
-		{
-			cout << "рублей.";
-		}
-		else if (number % 10 == 1)
-		{
-			cout << "один рубль.";
-		}
-		else if (number % 10 == 2)
-		{
-			cout << "два рубля.";
-		}
-		else if (number % 10 == 3)
-		{
-			cout << "три рубля.";
-		}
-		else if (number % 10 == 4)
-		{
-			cout << "четыре рубля.";
-		}
-		else if (number % 10 == 5)
-		{
-			cout << "пять рублей.";
-		}
-		else if (number % 10 == 6)
-		{
-			cout << "шесть рублей.";
-		}
-		else if (number % 10 == 7)
-		{
-			cout << "семь рублей.";
+			cout << "семнадцать рублей.\n";
 		}
 		else if (number % 10 == 8)
 		{
-			cout << "восемь рублей.";
+			cout << "восемнадцать рублей.\n";
 		}
 		else if (number % 10 == 9)
 		{
-			cout << "девять рублей.";
+			cout << "девятнадцать рублей.\n";
 		}
 	}
-	cout << endl;
-}
 
-cout << endl;
-system("pause");
-return 0;
+	else
+	{	// перевод разряда десятков (от 20 до 90)
+		if ((number / 10) % 10 == 2)
+		{
+			cout << "двадцать ";
+		}
+		else if ((number / 10) % 10 == 3)
+		{
+			cout << "тридцать ";
+		}
+		else if ((number / 10) % 10 == 4)
+		{
+			cout << "сорок ";
+		}
+		else if ((number / 10) % 10 == 5)
+		{
+			cout << "пятьдесят ";
+		}
+		else if ((number / 10) % 10 == 6)
+		{
+			cout << "шестьдесят ";
+		}
+		else if ((number / 10) % 10 == 7)
+		{
+			cout << "семьдесят ";
+		}
+		else if ((number / 10) % 10 == 8)
+		{
+			cout << "восемьдесят ";
+		}
+		else if ((number / 10) % 10 == 9)
+		{
+		cout << "девяносто ";
+		}
+
+		// перевод разряда единиц
+		if (number % 10 == 0)
+		{
+			cout << "рублей.\n";
+		}
+		else if (number % 10 == 1)
+		{
+			cout << "один рубль.\n";
+		}
+		else if (number % 10 == 2)
+		{
+			cout << "два рубля.\n";
+		}
+		else if (number % 10 == 3)
+		{
+			cout << "три рубля.\n";
+		}
+		else if (number % 10 == 4)
+		{
+			cout << "четыре рубля.\n";
+		}
+		else if (number % 10 == 5)
+		{
+			cout << "пять рублей.\n";
+		}
+		else if (number % 10 == 6)
+		{
+			cout << "шесть рублей.\n";
+		}
+		else if (number % 10 == 7)
+		{
+			cout << "семь рублей.\n";
+		}
+		else if (number % 10 == 8)
+		{
+			cout << "восемь рублей.\n";
+		}
+		else if (number % 10 == 9)
+		{
+			cout << "девять рублей.\n";
+		}
+	}
+	
+	cout << endl;
+	system("pause");
+	return 0;
 }
